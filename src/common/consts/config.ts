@@ -1,4 +1,5 @@
-import { IsEnum, IsNumber, IsOptional, IsString } from 'class-validator';
+import { IsEnum, IsNumber, IsOptional, IsString, } from 'class-validator';
+import { Expose } from 'class-transformer'
 
 export enum NODE_ENV {
   development = 'development',
@@ -6,6 +7,7 @@ export enum NODE_ENV {
 }
 
 export class ConfigurationVariables {
+  @Expose()
   @IsEnum(NODE_ENV, {
     message: `the property must have one of the following values: [${Object.values(
       NODE_ENV,
@@ -14,9 +16,11 @@ export class ConfigurationVariables {
   @IsOptional()
   NODE_ENV?: NODE_ENV;
 
+  @Expose()
   @IsNumber()
   PORT: number;
 
+  @Expose()
   @IsString()
   @IsOptional()
   UTC_OFFSET: string;

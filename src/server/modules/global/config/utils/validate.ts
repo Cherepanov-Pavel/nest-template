@@ -16,7 +16,10 @@ export function validate(
   const validatedConfig: ConfigurationVariables = plainToInstance(
     ConfigurationVariables,
     config,
-    { enableImplicitConversion: true },
+    {
+        excludeExtraneousValues: true,
+        enableImplicitConversion: true,
+    },
   );
 
   const errors: ValidationError[] = validateSync(validatedConfig, {
