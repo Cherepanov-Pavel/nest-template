@@ -11,10 +11,6 @@ COPY tsconfig.json .
 RUN npm install
 RUN npm run build
 
-# Выбрал alpine для production, т.к.:
-# node - 1.03GB
-# slim - 257.92MB
-# alpine - 207.49MB
 FROM registry-dvs-test.hostco.ru/node:14.17.3-alpine 
 
 
